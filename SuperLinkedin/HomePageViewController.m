@@ -11,7 +11,7 @@
 
 @interface HomePageViewController ()
 
-@property (nonatomic, strong)NSArray *names;
+@property (nonatomic, strong)NSArray *companies;
 
 @end
 
@@ -22,7 +22,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        //_names = @[@"a", @"b", @"c"];
+        _companies = @[@"a", @"b", @"c"];
+        //[self reload];
     }
     return self;
 }
@@ -30,9 +31,23 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self =[super initWithCoder:aDecoder];
     if (self) {
-        _names = @[@"a", @"b", @"c"];
+        self.parseClassName = @"Company";
+        
+        self.textKey = @"name";
+        
+        self.pullToRefreshEnabled = YES;
+        
+        self.paginationEnabled = NO;
+        
+        //_companies = @[@"a", @"b", @"c"];
     }
     return self;
+}
+
+- (PFQuery *)queryForTable {
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    
+    return query;
 }
 
 - (void)viewDidLoad
@@ -50,23 +65,40 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_names count];
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return 10;
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyInfoCell"];
+//    
+//    if (cell == nil) {
+//        NSLog(@"empty cell");
+//        
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CompanyInfoCell"];
+//    }
+//    return cell;
+//}
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyInfoCell"];
+    static NSString *companyTableIdentifier = @"CompanyInfoCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:companyTableIdentifier];
     
     if (cell == nil) {
-        NSLog(@"empty cell");
-        
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CompanyInfoCell"];
     }
+    
+    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
+    nameLabel.text = [object objectForKey:@"name"];
+    
     return cell;
 }
+
 
 /*
 #pragma mark - Navigation

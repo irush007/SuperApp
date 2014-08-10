@@ -129,6 +129,7 @@
 		95D0D75E1986C65700A213F6 /* SuperLinkedin */ = {
 			isa = PBXGroup;
 			children = (
+				96F531CC198F182800704ABB /* Config */,
 				95D0D79D198B5C1600A213F6 /* HomePage */,
 				95D0D7901986C69100A213F6 /* Login */,
 				95D0D7671986C65700A213F6 /* AppDelegate.h */,
@@ -137,8 +138,6 @@
 				95D0D76D1986C65700A213F6 /* Main_iPad.storyboard */,
 				95D0D7731986C65700A213F6 /* Images.xcassets */,
 				95D0D75F1986C65700A213F6 /* Supporting Files */,
-				95D0D7971986FB8400A213F6 /* Config.h */,
-				95D0D7981986FB8400A213F6 /* Config.m */,
 			);
 			path = SuperLinkedin;
 			sourceTree = "<group>";
@@ -190,6 +189,15 @@
 				95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */,
 			);
 			name = HomePage;
+			sourceTree = "<group>";
+		};
+		96F531CC198F182800704ABB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				95D0D7971986FB8400A213F6 /* Config.h */,
+				95D0D7981986FB8400A213F6 /* Config.m */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +477,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperLinkedin/SuperLinkedin-Prefix.pch";
 				INFOPLIST_FILE = "SuperLinkedin/SuperLinkedin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -483,6 +492,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperLinkedin/SuperLinkedin-Prefix.pch";
 				INFOPLIST_FILE = "SuperLinkedin/SuperLinkedin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -504,6 +514,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SuperLinkedinTests/SuperLinkedinTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -522,6 +533,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperLinkedin/SuperLinkedin-Prefix.pch";
 				INFOPLIST_FILE = "SuperLinkedinTests/SuperLinkedinTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

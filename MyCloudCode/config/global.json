@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "ReferMe": {
+            "applicationId": "XQGP8u0BWyg0siJFkAKTfH37LdJeGLmNiaN2Jkeu", 
+            "masterKey": "4GhEDQwCVWsGjwjQgKLkHzbOBiVpGzuuMfnThUhA"
+        }, 
+        "_default": {
+            "link": "ReferMe"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}
