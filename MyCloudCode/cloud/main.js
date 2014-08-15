@@ -76,6 +76,7 @@ Parse.Cloud.define("verifyUser", function(request, response) {
   	if (results.length > 0) {
   	  user = results[0];
   	} else {
+  	  console.log("This is first name: " + firstName);
 	  user.set("linkedinId", linkedinId);
 	  user.set("lastName", lastName);
 	  user.set("firstName", firstName);
@@ -109,12 +110,12 @@ Parse.Cloud.define("verifyUser", function(request, response) {
   	  	comp.set("name", httpResponse.data["name"]);
   	  	comp.set("type", httpResponse.data["companyType"]["name"]);
   	  	comp.set("size", httpResponse.data["employeeCountRange"]["name"]);
+  	  	comp.set("image_url", httpResponse.data["squareLogoUrl"]);
 
   	  	var address = httpResponse.data["locations"]["values"][0];
   	  	var city = address["address"]["city"];
   	  	var state = address["address"]["state"];
-  	  	console.log(city);
-  	  	console.log(state);
+
   	  	comp.set("city", city);
   	  	comp.set("state", state);
 

@@ -121,6 +121,11 @@
     UILabel *typeLabel = (UILabel *) [cell viewWithTag:104];
     typeLabel.text = [object objectForKey:@"type"];
     
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:106];
+    NSString *url_str = [object objectForKey:@"image_url"];
+    
+    imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url_str]]];
+
     return cell;
 }
 

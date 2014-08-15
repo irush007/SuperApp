@@ -151,7 +151,7 @@
             }
         }
         
-        NSDictionary *appUser = [[NSDictionary alloc] initWithObjectsAndKeys:result[@"id"],@"linkedinId",result[@"firstName"],@"fistName",result[@"lastName"],@"lastName",result[@"formattedName"],@"formattedName",result[@"location"][@"name"],@"location",schools,@"education",company_title,@"title",companyList,@"companyList",result[@"emailAddress"],@"email_address",nil];
+        NSDictionary *appUser = [[NSDictionary alloc] initWithObjectsAndKeys:result[@"id"],@"linkedinId",result[@"firstName"],@"firstName",result[@"lastName"],@"lastName",result[@"formattedName"],@"formattedName",result[@"location"][@"name"],@"location",schools,@"education",company_title,@"title",companyList,@"companyList",result[@"emailAddress"],@"email_address",nil];
         
         NSDictionary *company = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:company_id],@"company_id",company_name,@"company_name",nil];
         
