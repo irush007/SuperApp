@@ -31,24 +31,24 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self =[super initWithCoder:aDecoder];
     if (self) {
-        self.parseClassName = @"Company";
-        
-        self.textKey = @"name";
-        
-        self.pullToRefreshEnabled = YES;
-        
-        self.paginationEnabled = NO;
+//        self.parseClassName = @"Company";
+//        
+//        self.textKey = @"name";
+//        
+//        self.pullToRefreshEnabled = YES;
+//        
+//        self.paginationEnabled = NO;
         
         //_companies = @[@"a", @"b", @"c"];
     }
     return self;
 }
 
-- (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    return query;
-}
+//- (PFQuery *)queryForTable {
+//    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+//    
+//    return query;
+//}
 
 - (void)viewDidLoad
 {
@@ -87,10 +87,10 @@
 {
     static NSString *companyTableIdentifier = @"CompanyInfoCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:companyTableIdentifier];
+    CompanyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:companyTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CompanyInfoCell"];
+        cell = [[CompanyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CompanyInfoCell"];
     }
     
     UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];

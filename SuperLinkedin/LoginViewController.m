@@ -65,7 +65,7 @@
     
     _libUrl = @"http://www.ancientprogramming.com/liaexample";
     
-    _info_url = @"/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,location:(name),positions:(title,company:(id,name),is-current,start-date,end-date),educations:(school-name,field-of-study,start-date,end-date,degree,activities))";
+    _info_url = @"/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,location:(name),positions:(title,company:(id,name),is-current,start-date,end-date),educations:(school-name,field-of-study,start-date,end-date,degree,activities),email-address)";
     
     _firstTimeRun = YES;
     //PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
@@ -96,7 +96,7 @@
     LIALinkedInApplication *application = [LIALinkedInApplication applicationWithRedirectURL:_libUrl                                                                                    clientId:CLIENT_ID
                                                                                 clientSecret:CLIENT_SECRET
                                                                                        state:@"DCEEFWF45453sdffef424"
-                                                                               grantedAccess:@[@"r_fullprofile", @"r_network"]];
+                                                                               grantedAccess:@[@"r_fullprofile", @"r_network",@"r_emailaddress"]];
     
     return [LIALinkedInHttpClient clientForApplication:application presentingViewController:nil];
 }
@@ -125,71 +125,100 @@
     [self.client GET:[NSString stringWithFormat:auth_link, accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
         NSLog(@"current user %@", result);
         
-        /*
-        [PFCloud callFunctionInBackground:@"verifyUser" withParameters:@{@"userInfo":result} block:^(id object, NSError *error) {
+        
+        NSDictionary *education = result[@"educations"];
+        NSMutableArray *schools = [[NSMutableArray alloc] init];
+        for (id object in education[@"values"]) {
+            [schools addObject:object[@"schoolName"]];
+        }
+        
+        NSString *company_title;
+        NSString *company_name;
+        int company_id;
+        
+        NSDictionary *position = result[@"positions"];
+        NSMutableArray *companyList = [[NSMutableArray alloc] init];
+        
+        for (id object in position[@"values"]) {
+            if ([object[@"isCurrent"] intValue] == 1) {
+                company_id = [object[@"company"][@"id"] intValue];
+                company_name = object[@"company"][@"name"];
+                company_title = object[@"title"];
+            }
+            
+            if (object[@"company"][@"id"] != nil) {
+                [companyList addObject:object[@"company"][@"id"]];
+            }
+        }
+        
+        NSDictionary *appUser = [[NSDictionary alloc] initWithObjectsAndKeys:result[@"id"],@"linkedinId",result[@"firstName"],@"fistName",result[@"lastName"],@"lastName",result[@"formattedName"],@"formattedName",result[@"location"][@"name"],@"location",schools,@"education",company_title,@"title",companyList,@"companyList",result[@"emailAddress"],@"email_address",nil];
+        
+        NSDictionary *company = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:company_id],@"company_id",company_name,@"company_name",nil];
+        
+        [PFCloud callFunctionInBackground:@"verifyUser" withParameters:@{@"userInfo":appUser, @"company_info":company,@"access_token":accessToken} block:^(id object, NSError *error) {
             // TODO
             if (!error) {
                 NSLog(@"Save user successfully.");
             }
         }];
-        */
-        
-        PFObject *appUser = [PFObject objectWithClassName:@"AppUser"];
         
         
-        NSDictionary *education = result[@"educations"];
-        NSDictionary *position = result[@"positions"];
-        NSString *uid = result[@"id"];
-        NSString *firstName = result[@"firstName"];
-        NSString *lastName = result[@"lastName"];
-        NSString *formattedName = result[@"formattedName"];
-        NSString *location = result[@"location"][@"name"];
-        
-        NSMutableArray *schools = [NSMutableArray array];
-        
-        for (id object in education[@"values"]) {
-            [schools addObject:object[@"schoolName"]];
-        }
-        
-        int company_id = -1;
-        NSString *company_name;
-        
-        for (id object in position[@"values"]) {
-            if ([object[@"isCurrent"] intValue] == 1) {
-                company_id = (int)object[@"company"][@"id"];
-                company_name = object[@"company"][@"name"];
-                break;
-            }
-        }
-        
-        appUser[@"uid"] = uid;
-        appUser[@"firstName"] = firstName;
-        appUser[@"lastName"] = lastName;
-        appUser[@"formattedName"] = formattedName;
-        appUser[@"location"] = location;
-        appUser[@"education"] = schools;
-        
-        if (company_id != -1) {
-            PFQuery *comp_query = [PFQuery queryWithClassName:@"Company"];
-            [comp_query whereKey:@"compId" equalTo:[NSNumber numberWithInteger:company_id]];
-            [comp_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if (!error) {
-                    if ([objects count] == 0) {
-                        PFObject *company = [PFObject objectWithClassName:@"Company"];
-                        company[@"id"] = [NSNumber numberWithInt:company_id];
-                        company[@"name"] = company_name;
-                        appUser[@"company"] = company;
-                    } else {
-                        appUser[@"company"] = objects[0];
-                    }
-                    [appUser saveInBackground];
-                } else {
-                    NSLog(@"Query company went wrong: %@", error);
-                }
-            }];
-        } else {
-            NSLog(@"Company id is not -1.");
-        }
+//        PFObject *appUser = [PFObject objectWithClassName:@"AppUser"];
+//        
+//        
+//        NSDictionary *education = result[@"educations"];
+//        NSDictionary *position = result[@"positions"];
+//        NSString *uid = result[@"id"];
+//        NSString *firstName = result[@"firstName"];
+//        NSString *lastName = result[@"lastName"];
+//        NSString *formattedName = result[@"formattedName"];
+//        NSString *location = result[@"location"][@"name"];
+//        
+//        NSMutableArray *schools = [NSMutableArray array];
+//        
+//        for (id object in education[@"values"]) {
+//            [schools addObject:object[@"schoolName"]];
+//        }
+//        
+//        int company_id = -1;
+//        NSString *company_name;
+//        
+//        for (id object in position[@"values"]) {
+//            if ([object[@"isCurrent"] intValue] == 1) {
+//                company_id = (int)object[@"company"][@"compId"];
+//                company_name = object[@"company"][@"name"];
+//                break;
+//            }
+//        }
+//        
+//        appUser[@"uid"] = uid;
+//        appUser[@"firstName"] = firstName;
+//        appUser[@"lastName"] = lastName;
+//        appUser[@"formattedName"] = formattedName;
+//        appUser[@"location"] = location;
+//        appUser[@"education"] = schools;
+//        
+//        if (company_id != -1) {
+//            PFQuery *comp_query = [PFQuery queryWithClassName:@"Company"];
+//            [comp_query whereKey:@"compId" equalTo:[NSNumber numberWithInteger:company_id]];
+//            [comp_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                if (!error) {
+//                    if ([objects count] == 0) {
+//                        PFObject *company = [PFObject objectWithClassName:@"Company"];
+//                        company[@"compId"] = [NSNumber numberWithInt:company_id];
+//                        company[@"name"] = company_name;
+//                        appUser[@"company"] = company;
+//                    } else {
+//                        appUser[@"company"] = objects[0];
+//                    }
+//                    [appUser saveInBackground];
+//                } else {
+//                    NSLog(@"Query company went wrong: %@", error);
+//                }
+//            }];
+//        } else {
+//            NSLog(@"Company id is not -1.");
+//        }
         /*
         NSString *uid = result[@"id"];
         PFQuery *query = [PFQuery queryWithClassName:@"AppUser"];

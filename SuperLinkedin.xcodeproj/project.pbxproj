@@ -25,6 +25,7 @@
 		95D0D7991986FB8400A213F6 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D7981986FB8400A213F6 /* Config.m */; };
 		95D0D79C19870E7E00A213F6 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79B19870E7E00A213F6 /* HomePageViewController.m */; };
 		95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */; };
+		96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F531CE1998458600704ABB /* HomePageTableViewController.m */; };
 		9FD7113F6FE544D0914CAF51 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF76FF06FBF416AB045CB66 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		95D0D79B19870E7E00A213F6 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		95D0D79E198B653900A213F6 /* CompanyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyTableViewCell.h; sourceTree = "<group>"; };
 		95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyTableViewCell.m; sourceTree = "<group>"; };
+		96F531CD1998458600704ABB /* HomePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableViewController.h; sourceTree = "<group>"; };
+		96F531CE1998458600704ABB /* HomePageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableViewController.m; sourceTree = "<group>"; };
 		ED08BD5492A54604B99973DB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FBF76FF06FBF416AB045CB66 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,6 +190,8 @@
 				95D0D79B19870E7E00A213F6 /* HomePageViewController.m */,
 				95D0D79E198B653900A213F6 /* CompanyTableViewCell.h */,
 				95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */,
+				96F531CD1998458600704ABB /* HomePageTableViewController.h */,
+				96F531CE1998458600704ABB /* HomePageTableViewController.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 			files = (
 				95D0D7691986C65700A213F6 /* AppDelegate.m in Sources */,
 				95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */,
+				96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */,
 				95D0D7991986FB8400A213F6 /* Config.m in Sources */,
 				95D0D79C19870E7E00A213F6 /* HomePageViewController.m in Sources */,
 				95D0D7651986C65700A213F6 /* main.m in Sources */,
