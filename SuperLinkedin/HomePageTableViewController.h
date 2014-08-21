@@ -10,5 +10,6 @@
 #import <Parse/Parse.h>
 
 @interface HomePageTableViewController : PFQueryTableViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 
 @end

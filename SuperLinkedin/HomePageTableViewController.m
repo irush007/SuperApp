@@ -8,6 +8,7 @@
 
 #import "HomePageTableViewController.h"
 #import "CompanyTableViewCell.h"
+#import "SWRevealViewController.h"
 
 @interface HomePageTableViewController ()
 
@@ -35,7 +36,7 @@
 
         self.pullToRefreshEnabled = YES;
 
-        self.paginationEnabled = NO;
+        self.paginationEnabled = YES;
         
     }
     return self;
@@ -46,11 +47,15 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // Change button color
+    _sideBarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
+    
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sideBarButton.target = self.revealViewController;
+    _sideBarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning

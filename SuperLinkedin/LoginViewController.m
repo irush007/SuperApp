@@ -13,6 +13,8 @@
 #import "Config.h"
 #import "HomePageViewController.h"
 #import <Parse/Parse.h>
+#import "HomePageTableViewController.h"
+#import "SWRevealViewController.h"
 
 @interface LoginViewController ()
 
@@ -68,9 +70,6 @@
     _info_url = @"/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,location:(name),positions:(title,company:(id,name),is-current,start-date,end-date),educations:(school-name,field-of-study,start-date,end-date,degree,activities),email-address)";
     
     _firstTimeRun = YES;
-    //PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    //testObject[@"foo"] = @"bar";
-    //[testObject saveInBackground];
 
 }
 
@@ -81,16 +80,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+
+//#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"login_succcess"]) {
+        SWRevealViewController *destination = [segue destinationViewController];
+        UINavigationController *navViewController = (UINavigationController *) [destination frontViewController];
+        HomePageTableViewController *destViewController = (HomePageTableViewController* )[navViewController topViewController];
+    }
 }
-*/
+
 
 - (LIALinkedInHttpClient *)client {
     LIALinkedInApplication *application = [LIALinkedInApplication applicationWithRedirectURL:_libUrl                                                                                    clientId:CLIENT_ID

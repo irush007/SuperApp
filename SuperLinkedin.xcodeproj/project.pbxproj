@@ -26,6 +26,8 @@
 		95D0D79C19870E7E00A213F6 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79B19870E7E00A213F6 /* HomePageViewController.m */; };
 		95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */; };
 		96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F531CE1998458600704ABB /* HomePageTableViewController.m */; };
+		96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5322619A324EA00704ABB /* SWRevealViewController.m */; };
+		96F5322A19A329B700704ABB /* sideBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5322919A329B700704ABB /* sideBarMenuController.m */; };
 		9FD7113F6FE544D0914CAF51 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF76FF06FBF416AB045CB66 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,10 @@
 		95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyTableViewCell.m; sourceTree = "<group>"; };
 		96F531CD1998458600704ABB /* HomePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableViewController.h; sourceTree = "<group>"; };
 		96F531CE1998458600704ABB /* HomePageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableViewController.m; sourceTree = "<group>"; };
+		96F5322519A324EA00704ABB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		96F5322619A324EA00704ABB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		96F5322819A329B700704ABB /* sideBarMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sideBarMenuController.h; sourceTree = "<group>"; };
+		96F5322919A329B700704ABB /* sideBarMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideBarMenuController.m; sourceTree = "<group>"; };
 		ED08BD5492A54604B99973DB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FBF76FF06FBF416AB045CB66 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +138,7 @@
 		95D0D75E1986C65700A213F6 /* SuperLinkedin */ = {
 			isa = PBXGroup;
 			children = (
+				96F5322419A324D600704ABB /* Library */,
 				96F531CC198F182800704ABB /* Config */,
 				95D0D79D198B5C1600A213F6 /* HomePage */,
 				95D0D7901986C69100A213F6 /* Login */,
@@ -192,6 +199,8 @@
 				95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */,
 				96F531CD1998458600704ABB /* HomePageTableViewController.h */,
 				96F531CE1998458600704ABB /* HomePageTableViewController.m */,
+				96F5322819A329B700704ABB /* sideBarMenuController.h */,
+				96F5322919A329B700704ABB /* sideBarMenuController.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -203,6 +212,15 @@
 				95D0D7981986FB8400A213F6 /* Config.m */,
 			);
 			name = Config;
+			sourceTree = "<group>";
+		};
+		96F5322419A324D600704ABB /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				96F5322519A324EA00704ABB /* SWRevealViewController.h */,
+				96F5322619A324EA00704ABB /* SWRevealViewController.m */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +359,8 @@
 				95D0D7691986C65700A213F6 /* AppDelegate.m in Sources */,
 				95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */,
 				96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */,
+				96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */,
+				96F5322A19A329B700704ABB /* sideBarMenuController.m in Sources */,
 				95D0D7991986FB8400A213F6 /* Config.m in Sources */,
 				95D0D79C19870E7E00A213F6 /* HomePageViewController.m in Sources */,
 				95D0D7651986C65700A213F6 /* main.m in Sources */,
