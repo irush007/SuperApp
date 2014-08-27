@@ -8,6 +8,7 @@
 
 #import "sideBarMenuController.h"
 #import "SWRevealViewController.h"
+#import "HomePageTableViewController.h"
 
 @interface sideBarMenuController ()
 
@@ -32,7 +33,7 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
     
-    _menuItems = @[@"home", @"preferences", @"profile", @"signout"];
+    _menuItems = @[@"home", @"preferences", @"profile", @"settings"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -109,6 +110,26 @@
 }
 */
 
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"clicked");
+//    if (indexPath.row == 3) {
+//        NSLog(@"logout pressed");
+//        [self logout];
+//    }
+//}
+//
+//- (void)logout {
+//    [self toLoginView];
+//}
+//
+//- (IBAction)toLoginView {
+//    //UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+//    //UIViewController *loginViewController = [loginStoryboard instantiateInitialViewController];
+//    HomePageTableViewController *loginViewController = [[HomePageTableViewController alloc] init];
+//    loginViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self presentViewController:loginViewController animated:YES completion:nil];
+//}
+
 
 #pragma mark - Navigation
 
@@ -118,9 +139,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
     destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
+
     
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;

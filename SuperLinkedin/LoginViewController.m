@@ -88,7 +88,9 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([[segue identifier] isEqualToString:@"login_succcess"]) {
+    NSLog(@"checking");
+    if ([[segue identifier] isEqualToString:@"login_success"]) {
+        NSLog(@"Preparing segue.");
         SWRevealViewController *destination = [segue destinationViewController];
         UINavigationController *navViewController = (UINavigationController *) [destination frontViewController];
         HomePageTableViewController *destViewController = (HomePageTableViewController* )[navViewController topViewController];
@@ -106,7 +108,9 @@
 }
 
 - (IBAction)didTapSignInLinkedin:(id)sender {
+    NSLog(@"tap sign in");
     [self.client getAuthorizationCode:^(NSString *code) {
+        NSLog(@"getting token");
         _firstTimeRun = NO;
         [_signInButton setHidden:TRUE];
         [self.client getAccessToken:code success:^(NSDictionary *accessTokenData) {
