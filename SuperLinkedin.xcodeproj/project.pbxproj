@@ -23,8 +23,9 @@
 		95D0D7871986C65700A213F6 /* SuperLinkedinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D7861986C65700A213F6 /* SuperLinkedinTests.m */; };
 		95D0D7931986C6A400A213F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D7921986C6A400A213F6 /* LoginViewController.m */; };
 		95D0D7991986FB8400A213F6 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D7981986FB8400A213F6 /* Config.m */; };
-		95D0D79C19870E7E00A213F6 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79B19870E7E00A213F6 /* HomePageViewController.m */; };
 		95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */; };
+		9601A56B19B39AD7004EB4A0 /* CompanyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A56A19B39AD7004EB4A0 /* CompanyDetailViewController.m */; };
+		9601A57019B3EDF2004EB4A0 /* MessageCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A56F19B3EDF2004EB4A0 /* MessageCenterTableViewController.m */; };
 		969AF44419A9AD7500586C82 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969AF44319A9AD7500586C82 /* SettingsViewController.m */; };
 		96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F531CE1998458600704ABB /* HomePageTableViewController.m */; };
 		96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5322619A324EA00704ABB /* SWRevealViewController.m */; };
@@ -65,10 +66,12 @@
 		95D0D7921986C6A400A213F6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		95D0D7971986FB8400A213F6 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		95D0D7981986FB8400A213F6 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
-		95D0D79A19870E7E00A213F6 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
-		95D0D79B19870E7E00A213F6 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		95D0D79E198B653900A213F6 /* CompanyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyTableViewCell.h; sourceTree = "<group>"; };
 		95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyTableViewCell.m; sourceTree = "<group>"; };
+		9601A56919B39AD7004EB4A0 /* CompanyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDetailViewController.h; sourceTree = "<group>"; };
+		9601A56A19B39AD7004EB4A0 /* CompanyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDetailViewController.m; sourceTree = "<group>"; };
+		9601A56E19B3EDF2004EB4A0 /* MessageCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterTableViewController.h; sourceTree = "<group>"; };
+		9601A56F19B3EDF2004EB4A0 /* MessageCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterTableViewController.m; sourceTree = "<group>"; };
 		969AF44219A9AD7500586C82 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		969AF44319A9AD7500586C82 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		96F531CD1998458600704ABB /* HomePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableViewController.h; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 		95D0D75E1986C65700A213F6 /* SuperLinkedin */ = {
 			isa = PBXGroup;
 			children = (
+				9601A56D19B3EDD1004EB4A0 /* MessageCenter */,
 				96F5322419A324D600704ABB /* Library */,
 				96F531CC198F182800704ABB /* Config */,
 				95D0D79D198B5C1600A213F6 /* HomePage */,
@@ -196,8 +200,6 @@
 		95D0D79D198B5C1600A213F6 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				95D0D79A19870E7E00A213F6 /* HomePageViewController.h */,
-				95D0D79B19870E7E00A213F6 /* HomePageViewController.m */,
 				95D0D79E198B653900A213F6 /* CompanyTableViewCell.h */,
 				95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */,
 				96F531CD1998458600704ABB /* HomePageTableViewController.h */,
@@ -206,8 +208,19 @@
 				96F5322919A329B700704ABB /* sideBarMenuController.m */,
 				969AF44219A9AD7500586C82 /* SettingsViewController.h */,
 				969AF44319A9AD7500586C82 /* SettingsViewController.m */,
+				9601A56919B39AD7004EB4A0 /* CompanyDetailViewController.h */,
+				9601A56A19B39AD7004EB4A0 /* CompanyDetailViewController.m */,
 			);
 			name = HomePage;
+			sourceTree = "<group>";
+		};
+		9601A56D19B3EDD1004EB4A0 /* MessageCenter */ = {
+			isa = PBXGroup;
+			children = (
+				9601A56E19B3EDF2004EB4A0 /* MessageCenterTableViewController.h */,
+				9601A56F19B3EDF2004EB4A0 /* MessageCenterTableViewController.m */,
+			);
+			name = MessageCenter;
 			sourceTree = "<group>";
 		};
 		96F531CC198F182800704ABB /* Config */ = {
@@ -363,14 +376,15 @@
 			files = (
 				95D0D7691986C65700A213F6 /* AppDelegate.m in Sources */,
 				95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */,
+				9601A57019B3EDF2004EB4A0 /* MessageCenterTableViewController.m in Sources */,
 				96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */,
 				96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */,
 				96F5322A19A329B700704ABB /* sideBarMenuController.m in Sources */,
 				95D0D7991986FB8400A213F6 /* Config.m in Sources */,
-				95D0D79C19870E7E00A213F6 /* HomePageViewController.m in Sources */,
 				969AF44419A9AD7500586C82 /* SettingsViewController.m in Sources */,
 				95D0D7651986C65700A213F6 /* main.m in Sources */,
 				95D0D7931986C6A400A213F6 /* LoginViewController.m in Sources */,
+				9601A56B19B39AD7004EB4A0 /* CompanyDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "HomePageTableViewController.h"
 #import "CompanyTableViewCell.h"
 #import "SWRevealViewController.h"
+#import "CompanyDetailViewController.h"
 
 @interface HomePageTableViewController ()
 
@@ -63,8 +64,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -174,16 +173,22 @@
 }
 */
 
-/*
-#pragma mark - Navigation
+
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"referMe"]) {
+        UITableViewCell *selectedCell = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:selectedCell];
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        
+        CompanyDetailViewController *companyDetailViewController = (CompanyDetailViewController *)segue.destinationViewController;
+        
+        companyDetailViewController.company = object;
+        
+    }
 }
 
- */
 
 @end

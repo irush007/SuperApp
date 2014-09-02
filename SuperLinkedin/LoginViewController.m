@@ -11,7 +11,6 @@
 #import "LIALinkedInHttpClient.h"
 #import "LIALinkedInApplication.h"
 #import "Config.h"
-#import "HomePageViewController.h"
 #import <Parse/Parse.h>
 #import "HomePageTableViewController.h"
 #import "SWRevealViewController.h"
