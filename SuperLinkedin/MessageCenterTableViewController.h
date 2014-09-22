@@ -11,4 +11,6 @@
 
 @interface MessageCenterTableViewController : PFQueryTableViewController
 
+@property (nonatomic, retain) NSMutableArray *dataArray;
+
 @end

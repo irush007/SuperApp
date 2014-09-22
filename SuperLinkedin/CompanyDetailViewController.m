@@ -7,21 +7,36 @@
 //
 
 #import "CompanyDetailViewController.h"
+#import "UserClass.h"
 
 @interface CompanyDetailViewController ()
+@property (nonatomic, retain) UserClass *user_class;
 
 @end
 
 @implementation CompanyDetailViewController
+@synthesize user_class = _user_class;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        NSLog(@"i am here");
         // Custom initialization
+        self.user_class = [UserClass getInstance];
     }
     return self;
 }
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self =[super initWithCoder:aDecoder];
+    if (self) {
+        NSLog(@"i am here 2");
+        self.user_class = [UserClass getInstance];
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad
 {
@@ -41,5 +56,21 @@
 }
 
 - (IBAction)referMeButton:(id)sender {
+    NSLog(@"refer me button tapped.");
+    
+    PFObject *appUser = self.user_class.appUser;
+    NSLog(@"This is user id: %@", [appUser objectId]);
+    PFObject *company = _company;
+    NSLog(@"This is company id : %@", [company objectId]);
+    
+    [PFCloud callFunctionInBackground:@"referMainFunc" withParameters:@{@"user_id":[appUser objectId], @"company_id":[company objectId]} block:^(id object, NSError *error) {
+        // TODO
+        if (!error) {
+            NSLog(@"request sent successfully.");
+        }
+    }];
+    
+    
 }
+
 @end

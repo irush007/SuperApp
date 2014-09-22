@@ -26,6 +26,11 @@
 		95D0D7A0198B653900A213F6 /* CompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0D79F198B653900A213F6 /* CompanyTableViewCell.m */; };
 		9601A56B19B39AD7004EB4A0 /* CompanyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A56A19B39AD7004EB4A0 /* CompanyDetailViewController.m */; };
 		9601A57019B3EDF2004EB4A0 /* MessageCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A56F19B3EDF2004EB4A0 /* MessageCenterTableViewController.m */; };
+		9601A57419B82A85004EB4A0 /* UserClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A57319B82A85004EB4A0 /* UserClass.m */; };
+		9601A57919C64FF7004EB4A0 /* RequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A57819C64FF7004EB4A0 /* RequestTableViewCell.m */; };
+		9601A57C19C6531A004EB4A0 /* ReplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9601A57B19C6531A004EB4A0 /* ReplyTableViewCell.m */; };
+		962C0CBC19C8DD3B005AC86F /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962C0CBB19C8DD3B005AC86F /* ReplyTableViewCell.xib */; };
+		962C0CBE19C8E178005AC86F /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962C0CBD19C8E178005AC86F /* RequestTableViewCell.xib */; };
 		969AF44419A9AD7500586C82 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969AF44319A9AD7500586C82 /* SettingsViewController.m */; };
 		96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F531CE1998458600704ABB /* HomePageTableViewController.m */; };
 		96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5322619A324EA00704ABB /* SWRevealViewController.m */; };
@@ -72,6 +77,14 @@
 		9601A56A19B39AD7004EB4A0 /* CompanyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDetailViewController.m; sourceTree = "<group>"; };
 		9601A56E19B3EDF2004EB4A0 /* MessageCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterTableViewController.h; sourceTree = "<group>"; };
 		9601A56F19B3EDF2004EB4A0 /* MessageCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterTableViewController.m; sourceTree = "<group>"; };
+		9601A57219B82A85004EB4A0 /* UserClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserClass.h; sourceTree = "<group>"; };
+		9601A57319B82A85004EB4A0 /* UserClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserClass.m; sourceTree = "<group>"; };
+		9601A57719C64FF7004EB4A0 /* RequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestTableViewCell.h; sourceTree = "<group>"; };
+		9601A57819C64FF7004EB4A0 /* RequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestTableViewCell.m; sourceTree = "<group>"; };
+		9601A57A19C6531A004EB4A0 /* ReplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyTableViewCell.h; sourceTree = "<group>"; };
+		9601A57B19C6531A004EB4A0 /* ReplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyTableViewCell.m; sourceTree = "<group>"; };
+		962C0CBB19C8DD3B005AC86F /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
+		962C0CBD19C8E178005AC86F /* RequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		969AF44219A9AD7500586C82 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		969AF44319A9AD7500586C82 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		96F531CD1998458600704ABB /* HomePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableViewController.h; sourceTree = "<group>"; };
@@ -144,6 +157,7 @@
 		95D0D75E1986C65700A213F6 /* SuperLinkedin */ = {
 			isa = PBXGroup;
 			children = (
+				9601A57119B82A36004EB4A0 /* AppSingleton */,
 				9601A56D19B3EDD1004EB4A0 /* MessageCenter */,
 				96F5322419A324D600704ABB /* Library */,
 				96F531CC198F182800704ABB /* Config */,
@@ -219,8 +233,23 @@
 			children = (
 				9601A56E19B3EDF2004EB4A0 /* MessageCenterTableViewController.h */,
 				9601A56F19B3EDF2004EB4A0 /* MessageCenterTableViewController.m */,
+				9601A57719C64FF7004EB4A0 /* RequestTableViewCell.h */,
+				9601A57819C64FF7004EB4A0 /* RequestTableViewCell.m */,
+				9601A57A19C6531A004EB4A0 /* ReplyTableViewCell.h */,
+				9601A57B19C6531A004EB4A0 /* ReplyTableViewCell.m */,
+				962C0CBB19C8DD3B005AC86F /* ReplyTableViewCell.xib */,
+				962C0CBD19C8E178005AC86F /* RequestTableViewCell.xib */,
 			);
 			name = MessageCenter;
+			sourceTree = "<group>";
+		};
+		9601A57119B82A36004EB4A0 /* AppSingleton */ = {
+			isa = PBXGroup;
+			children = (
+				9601A57219B82A85004EB4A0 /* UserClass.h */,
+				9601A57319B82A85004EB4A0 /* UserClass.m */,
+			);
+			name = AppSingleton;
 			sourceTree = "<group>";
 		};
 		96F531CC198F182800704ABB /* Config */ = {
@@ -320,8 +349,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D0D76F1986C65700A213F6 /* Main_iPad.storyboard in Resources */,
+				962C0CBE19C8E178005AC86F /* RequestTableViewCell.xib in Resources */,
 				95D0D7741986C65700A213F6 /* Images.xcassets in Resources */,
 				95D0D76C1986C65700A213F6 /* Main_iPhone.storyboard in Resources */,
+				962C0CBC19C8DD3B005AC86F /* ReplyTableViewCell.xib in Resources */,
 				95D0D7631986C65700A213F6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,11 +411,14 @@
 				96F531CF1998458600704ABB /* HomePageTableViewController.m in Sources */,
 				96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */,
 				96F5322A19A329B700704ABB /* sideBarMenuController.m in Sources */,
+				9601A57C19C6531A004EB4A0 /* ReplyTableViewCell.m in Sources */,
 				95D0D7991986FB8400A213F6 /* Config.m in Sources */,
 				969AF44419A9AD7500586C82 /* SettingsViewController.m in Sources */,
+				9601A57919C64FF7004EB4A0 /* RequestTableViewCell.m in Sources */,
 				95D0D7651986C65700A213F6 /* main.m in Sources */,
 				95D0D7931986C6A400A213F6 /* LoginViewController.m in Sources */,
 				9601A56B19B39AD7004EB4A0 /* CompanyDetailViewController.m in Sources */,
+				9601A57419B82A85004EB4A0 /* UserClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

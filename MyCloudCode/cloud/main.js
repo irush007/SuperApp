@@ -28,6 +28,7 @@ Parse.Cloud.define("verifyUser", function(request, response) {
   var companyList = user_info_obj["companyList"];
 
   var email = user_info_obj["email_address"];
+  var user_pic_url = user_info_obj["picture_url"];
 
   var access_token = request.params.access_token;
 
@@ -44,28 +45,6 @@ Parse.Cloud.define("verifyUser", function(request, response) {
 
   console.log("request url is : " + linkedin_cmp_request_url);
 
-
-  // comp_query.equalTo("companyId", company_id);
-  // comp_query.find().then(function(companies) {
-  // 	var Company = Parse.Object.extend("Company");
-  // 	var comp = new Company();
-  // 	//var promise = new Parse.Promise();
-  // 	if (companies.length > 0) {
-  // 	  comp = companies[0];
-  // 	} else {
-  // 	  console.log("Query linkedin for company.");
-  // 	  Parse.Cloud.httpRequest({
-  // 		url: linkedin_cmp_request_url
-  // 	  }).then(function(httpResponse){
-  // 	  	console.log(httpResponse.data);
-
-  // 	  }, function(error){
-  // 	  	console.log("get data error");
-  // 	  	console.log(error);
-  // 	  });
-  // 	}
-  // });
-  // 
   comp_query.equalTo("company_id", company_id);
 
   user_query.equalTo("linkedinId", linkedinId);
@@ -75,8 +54,9 @@ Parse.Cloud.define("verifyUser", function(request, response) {
   user_query.find().then(function(results) {
   	if (results.length > 0) {
   	  user = results[0];
-  	} else {
-  	  console.log("This is first name: " + firstName);
+  	}
+
+  	console.log("This is first name: " + firstName);
 	  user.set("linkedinId", linkedinId);
 	  user.set("lastName", lastName);
 	  user.set("firstName", firstName);
@@ -86,7 +66,8 @@ Parse.Cloud.define("verifyUser", function(request, response) {
 	  user.set("education", education);
 	  user.set("companyList", companyList);
 	  user.set("email_address", email);
-  	}
+    user.set("picture_url", user_pic_url);
+
   	return user.save();
   }).then(function(user) {
   	return comp_query.find();
@@ -98,7 +79,7 @@ Parse.Cloud.define("verifyUser", function(request, response) {
   	  user.set("company", comp_results[0]);
   	  user.save();
   	  console.log("company already exists");
-  	  response.success("User signed in successfully.");
+  	  response.success(user);
   	} else {
   	  console.log("Query linkedin for company.");
   	  Parse.Cloud.httpRequest({
@@ -121,52 +102,44 @@ Parse.Cloud.define("verifyUser", function(request, response) {
 
   	  	user.set("company", comp);
   	  	user.save();
-  	  	response.success("User signed in successfully.");
+  	  	response.success(user);
   	  }, function(error){
   	  	console.log(error);
   	    response.error("Something went wrong when user signed in.");
   	  });
   	}
   });
-
-  // query.equalTo("id", user_info_obj["linkedinId"]);
-  // query.find({
-  // 	success: function(results) {
-  // 	  if (results.length > 0) {
-
-
-  // 	  } else {
-  // 	  	var user = Parse.Object.extend("AppUser");
-  // 	  	user.set("linkedinId", linkedinId);
-  // 	  	user.set("lastName", lastName);
-  // 	  	user.set("firstName", firstName);
-  // 	  	user.set("formattedName", fullName);
-  // 	  	user.set("location", location);
-  // 	  	user.set("title", title);
-  // 	  	user.set("education", education);
-  // 	  	user.set("companyList", companyList);
-
-
-
-
-  // 	  }
-
-  // 	  if (count > 0) {
-  // 	    //response.success("The user already there.");
-  // 	   	// if need update user info
-  // 	   	updateUserInfo()
-  // 	    console.log("User already exists");
-  // 	  } else {
-  // 	  	console.log("New user found");
-  // 	  	appUser = helper.addNewUser(user_info_obj);
-
-  // 	  	//response.success("New user signed in.");
-  // 	  }
-  // 	},
-  // 	error: function(error) {
-  //     // TODO when error occurs
-  //     console.log("User sign in failed: " + error);
-  //     //response.error(error);
-  // 	}
-  // });
 });
+
+Parse.Cloud.define("referMainFunc", function(request, response) {
+  console.log("refer function starting...");
+
+  var user_obj = Parse.Object.extend("AppUser");
+  var company_obj = Parse.Object.extend("Company");
+
+  var requester = new user_obj();
+  var company = new company_obj();
+
+  requester.id = request.params.user_id;
+  company.id = request.params.company_id;
+
+  console.log(requester);
+  console.log(company);
+
+  var apply_obj = Parse.Object.extend("Apply");
+  var apply = new apply_obj();
+
+  apply.set("from", requester);
+  apply.set("company", company)
+  apply.save(null, {
+    success: function(apply) {
+      console.log("Application get saved.");
+      response.success("Request received.");
+    },
+    error: function(apply, error) {
+      console.log(error);
+      response.error("Failed to process application.")
+    }
+  });
+});
+

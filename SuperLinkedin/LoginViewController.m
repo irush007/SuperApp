@@ -14,6 +14,7 @@
 #import <Parse/Parse.h>
 #import "HomePageTableViewController.h"
 #import "SWRevealViewController.h"
+#import "UserClass.h"
 
 @interface LoginViewController ()
 
@@ -66,7 +67,7 @@
     
     _libUrl = @"http://www.ancientprogramming.com/liaexample";
     
-    _info_url = @"/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,location:(name),positions:(title,company:(id,name),is-current,start-date,end-date),educations:(school-name,field-of-study,start-date,end-date,degree,activities),email-address)";
+    _info_url = @"/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,location:(name),positions:(title,company:(id,name),is-current,start-date,end-date),educations:(school-name,field-of-study,start-date,end-date,degree,activities),email-address,picture-url)";
     
     _firstTimeRun = YES;
 
@@ -158,7 +159,7 @@
             }
         }
         
-        NSDictionary *appUser = [[NSDictionary alloc] initWithObjectsAndKeys:result[@"id"],@"linkedinId",result[@"firstName"],@"firstName",result[@"lastName"],@"lastName",result[@"formattedName"],@"formattedName",result[@"location"][@"name"],@"location",schools,@"education",company_title,@"title",companyList,@"companyList",result[@"emailAddress"],@"email_address",nil];
+        NSDictionary *appUser = [[NSDictionary alloc] initWithObjectsAndKeys:result[@"id"],@"linkedinId",result[@"firstName"],@"firstName",result[@"lastName"],@"lastName",result[@"formattedName"],@"formattedName",result[@"location"][@"name"],@"location",schools,@"education",company_title,@"title",companyList,@"companyList",result[@"emailAddress"],@"email_address",result[@"pictureUrl"],@"picture_url",nil];
         
         NSDictionary *company = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:company_id],@"company_id",company_name,@"company_name",nil];
         
@@ -166,6 +167,8 @@
             // TODO
             if (!error) {
                 NSLog(@"Save user successfully.");
+                UserClass *single_obj = [UserClass getInstance];
+                single_obj.appUser = (PFObject *)object;
             }
         }];
         
