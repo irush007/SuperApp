@@ -59,6 +59,7 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -130,7 +131,19 @@
     NSString *url_str = [object objectForKey:@"image_url"];
     
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url_str]]];
-
+    
+    // add vertical margin between cells
+    UIView *cellSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 0,320,5)];
+    [cellSeparator setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |
+     UIViewAutoresizingFlexibleRightMargin |
+     UIViewAutoresizingFlexibleWidth];
+    [cellSeparator setContentMode:UIViewContentModeTopLeft];
+    [cellSeparator setBackgroundColor:[UIColor lightGrayColor]];
+    [cell addSubview:cellSeparator];
+    
+    // delete right arrow in cell
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
     return cell;
 }
 

@@ -31,4 +31,11 @@
     // Configure the view for the selected state
 }
 
+// set horizontal margin for cells
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x += 5;
+    frame.size.width -= 2 * 5;
+    [super setFrame:frame];
+}
+
 @end

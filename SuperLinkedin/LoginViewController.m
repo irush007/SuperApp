@@ -12,6 +12,7 @@
 #import "LIALinkedInApplication.h"
 #import "Config.h"
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 #import "HomePageTableViewController.h"
 #import "SWRevealViewController.h"
 #import "UserClass.h"
@@ -70,7 +71,8 @@
     _info_url = @"/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,location:(name),positions:(title,company:(id,name),is-current,start-date,end-date),educations:(school-name,field-of-study,start-date,end-date,degree,activities),email-address,picture-url)";
     
     _firstTimeRun = YES;
-
+    
+    _signInButton.layer.cornerRadius = 5;
 }
 
 

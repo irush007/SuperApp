@@ -36,6 +36,9 @@
 		96F5322719A324EA00704ABB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5322619A324EA00704ABB /* SWRevealViewController.m */; };
 		96F5322A19A329B700704ABB /* sideBarMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5322919A329B700704ABB /* sideBarMenuController.m */; };
 		9FD7113F6FE544D0914CAF51 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF76FF06FBF416AB045CB66 /* libPods.a */; };
+		EC1F000A19E0912300EBAB9E /* referMe2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC1F000919E0912300EBAB9E /* referMe2.jpg */; };
+		EC1F000C19E0948500EBAB9E /* messages.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC1F000B19E0948500EBAB9E /* messages.jpg */; };
+		EC1F000E19E0EA2D00EBAB9E /* referers.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1F000D19E0EA2D00EBAB9E /* referers.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		96F5322619A324EA00704ABB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		96F5322819A329B700704ABB /* sideBarMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sideBarMenuController.h; sourceTree = "<group>"; };
 		96F5322919A329B700704ABB /* sideBarMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sideBarMenuController.m; sourceTree = "<group>"; };
+		EC1F000919E0912300EBAB9E /* referMe2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = referMe2.jpg; path = ../../../Desktop/Personal/ReferMe/resources/others/referMe2.jpg; sourceTree = "<group>"; };
+		EC1F000B19E0948500EBAB9E /* messages.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = messages.jpg; path = ../../../Desktop/Personal/ReferMe/resources/others/messages.jpg; sourceTree = "<group>"; };
+		EC1F000D19E0EA2D00EBAB9E /* referers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = referers.png; path = "../../../Desktop/Personal/ReferMe/resources/mini icons/referers.png"; sourceTree = "<group>"; };
 		ED08BD5492A54604B99973DB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FBF76FF06FBF416AB045CB66 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +182,9 @@
 		95D0D75F1986C65700A213F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EC1F000D19E0EA2D00EBAB9E /* referers.png */,
+				EC1F000B19E0948500EBAB9E /* messages.jpg */,
+				EC1F000919E0912300EBAB9E /* referMe2.jpg */,
 				95D0D7601986C65700A213F6 /* SuperLinkedin-Info.plist */,
 				95D0D7611986C65700A213F6 /* InfoPlist.strings */,
 				95D0D7641986C65700A213F6 /* main.m */,
@@ -354,9 +363,12 @@
 				95D0D76F1986C65700A213F6 /* Main_iPad.storyboard in Resources */,
 				962C0CBE19C8E178005AC86F /* RequestTableViewCell.xib in Resources */,
 				95D0D7741986C65700A213F6 /* Images.xcassets in Resources */,
+				EC1F000C19E0948500EBAB9E /* messages.jpg in Resources */,
 				95D0D76C1986C65700A213F6 /* Main_iPhone.storyboard in Resources */,
+				EC1F000A19E0912300EBAB9E /* referMe2.jpg in Resources */,
 				962C0CBC19C8DD3B005AC86F /* ReplyTableViewCell.xib in Resources */,
 				95D0D7631986C65700A213F6 /* InfoPlist.strings in Resources */,
+				EC1F000E19E0EA2D00EBAB9E /* referers.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
