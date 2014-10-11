@@ -163,6 +163,12 @@
         
         NSDictionary *company = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:company_id],@"company_id",company_name,@"company_name",nil];
         
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        if (![[currentInstallation objectForKey:@"channels"] containsObject:company_name]) {
+            [currentInstallation addUniqueObject:company_name forKey:@"channels"];
+            [currentInstallation saveInBackground];
+        }
+        
         [PFCloud callFunctionInBackground:@"verifyUser" withParameters:@{@"userInfo":appUser, @"company_info":company,@"access_token":accessToken} block:^(id object, NSError *error) {
             // TODO
             if (!error) {
@@ -171,97 +177,6 @@
                 single_obj.appUser = (PFObject *)object;
             }
         }];
-        
-        
-//        PFObject *appUser = [PFObject objectWithClassName:@"AppUser"];
-//        
-//        
-//        NSDictionary *education = result[@"educations"];
-//        NSDictionary *position = result[@"positions"];
-//        NSString *uid = result[@"id"];
-//        NSString *firstName = result[@"firstName"];
-//        NSString *lastName = result[@"lastName"];
-//        NSString *formattedName = result[@"formattedName"];
-//        NSString *location = result[@"location"][@"name"];
-//        
-//        NSMutableArray *schools = [NSMutableArray array];
-//        
-//        for (id object in education[@"values"]) {
-//            [schools addObject:object[@"schoolName"]];
-//        }
-//        
-//        int company_id = -1;
-//        NSString *company_name;
-//        
-//        for (id object in position[@"values"]) {
-//            if ([object[@"isCurrent"] intValue] == 1) {
-//                company_id = (int)object[@"company"][@"compId"];
-//                company_name = object[@"company"][@"name"];
-//                break;
-//            }
-//        }
-//        
-//        appUser[@"uid"] = uid;
-//        appUser[@"firstName"] = firstName;
-//        appUser[@"lastName"] = lastName;
-//        appUser[@"formattedName"] = formattedName;
-//        appUser[@"location"] = location;
-//        appUser[@"education"] = schools;
-//        
-//        if (company_id != -1) {
-//            PFQuery *comp_query = [PFQuery queryWithClassName:@"Company"];
-//            [comp_query whereKey:@"compId" equalTo:[NSNumber numberWithInteger:company_id]];
-//            [comp_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//                if (!error) {
-//                    if ([objects count] == 0) {
-//                        PFObject *company = [PFObject objectWithClassName:@"Company"];
-//                        company[@"compId"] = [NSNumber numberWithInt:company_id];
-//                        company[@"name"] = company_name;
-//                        appUser[@"company"] = company;
-//                    } else {
-//                        appUser[@"company"] = objects[0];
-//                    }
-//                    [appUser saveInBackground];
-//                } else {
-//                    NSLog(@"Query company went wrong: %@", error);
-//                }
-//            }];
-//        } else {
-//            NSLog(@"Company id is not -1.");
-//        }
-        /*
-        NSString *uid = result[@"id"];
-        PFQuery *query = [PFQuery queryWithClassName:@"AppUser"];
-        [query whereKey:@"id" equalTo:uid];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                NSLog(@"User signed in.");
-                
-                PFObject *user = [PFObject objectWithClassName:@"AppUser"];
-                user[@"id"] = result[@"id"];
-                user[@"first_name"] = result[@"firstName"];
-                user[@"last_name"] = result[@"lastName"];
-                
-                
-                
-                [PFCloud callFunctionInBackground:@"saveUser" withParameters:@{@"user":result} block:^(id object, NSError *error) {
-                    if (!error) {
-                        NSLog(@"Save Successfully.");
-                    }
-                }];
-
-         
-                [PFCloud callFunctionInBackground:@"hello" withParameters:@{} block:^(NSString *obj, NSError *error) {
-                    if (!error) {
-                        NSLog(@"this is calling function %@.", obj);
-                    }
-                }];
-         
-            } else {
-                NSLog(@"Something wrong!");
-            }
-        }];
-         */
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed to fetch current user %@", error);
     }];

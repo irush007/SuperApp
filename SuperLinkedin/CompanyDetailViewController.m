@@ -58,17 +58,33 @@
 - (IBAction)referMeButton:(id)sender {
     NSLog(@"refer me button tapped.");
     
+    PFObject *application = [PFObject objectWithClassName:@"Apply"];
+    
     PFObject *appUser = self.user_class.appUser;
     NSLog(@"This is user id: %@", [appUser objectId]);
+    NSLog(@"This is user object: %@", appUser);
+    
     PFObject *company = _company;
     NSLog(@"This is company id : %@", [company objectId]);
+    NSLog(@"This is company object: %@", company);
     
-    [PFCloud callFunctionInBackground:@"referMainFunc" withParameters:@{@"user_id":[appUser objectId], @"company_id":[company objectId]} block:^(id object, NSError *error) {
-        // TODO
-        if (!error) {
-            NSLog(@"request sent successfully.");
+    application[@"from"] = [PFObject objectWithoutDataWithClassName:@"AppUser" objectId:[appUser objectId]];
+    application[@"company"] = [PFObject objectWithoutDataWithClassName:@"Company" objectId:[company objectId]];
+    
+    [application saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"succeedd....");
         }
     }];
+    
+    
+    
+//    [PFCloud callFunctionInBackground:@"referMainFunc" withParameters:@{@"user_id":[appUser objectId], @"company_id":[company objectId]} block:^(id object, NSError *error) {
+//        // TODO
+//        if (!error) {
+//            NSLog(@"request sent successfully.");
+//        }
+//    }];
     
     
 }

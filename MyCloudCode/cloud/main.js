@@ -4,6 +4,7 @@
 // 
 
 var helper = require('cloud/saveUtil.js');
+var refer = require('cloud/referFunction.js');
 
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
@@ -12,6 +13,64 @@ Parse.Cloud.define("hello", function(request, response) {
 Parse.Cloud.afterSave("AppUser", function(request) {
   console.log("Calling afterSave, object saved successfully.");
 });
+
+Parse.Cloud.afterSave("Apply", function(request) {
+
+
+  // Parse.Push.send({
+  //   channels: ["Twitter"],
+  //   data: {
+  //     alert: "for testing hello"
+  //   }
+  // }, {
+  //   success: function() {
+  //     console.log("sent request hello");
+  //   },
+  //   error: function() {
+  //     console.log("ggggg");
+  //   }
+  // });
+
+  console.log(request.object.get("company").id);
+  
+  var user_query = new Parse.Query("AppUser");
+  var comp_query = new Parse.Query("Company");
+
+  var usernName = "";
+
+  console.log("before send notification...");
+
+  user_query.get(request.object.get("from").id).then(function(user) {
+    console.log("get user object...");
+    userName = user["formattedName"];
+    return comp_query.get(request.object.get("company").id);
+  }).then(function(comp) {
+    //var userName = user["formattedName"];
+    var companyName = comp["name"];
+    console.log("get company object");
+    var message = "please refer me at " + companyName;
+
+    Parse.Push.send({
+      channels: ["Twitter"],
+      data: {
+        alert: message
+      }
+    },{
+      success: function() {
+      // Push was successful
+        console.log("sent request hello");
+      },
+      error: function(error) {
+      // Handle error
+        console.log("ggggg");
+      }
+    });
+  });
+
+  console.log("request should be sent...");
+
+});
+
 
 Parse.Cloud.define("verifyUser", function(request, response) {
   var user_info_obj = request.params.userInfo;
@@ -114,6 +173,20 @@ Parse.Cloud.define("verifyUser", function(request, response) {
 Parse.Cloud.define("referMainFunc", function(request, response) {
   console.log("refer function starting...");
 
+  Parse.Push.send({
+    channels: ["Twitter"],
+    data: {
+      alert: "for testing hello"
+    }
+  }, {
+    success: function() {
+      console.log("sent request hello");
+    },
+    error: function() {
+      console.log("ggggg");
+    }
+  });
+
   var user_obj = Parse.Object.extend("AppUser");
   var company_obj = Parse.Object.extend("Company");
 
@@ -130,11 +203,12 @@ Parse.Cloud.define("referMainFunc", function(request, response) {
   var apply = new apply_obj();
 
   apply.set("from", requester);
-  apply.set("company", company)
+  apply.set("company", company);
   apply.save(null, {
     success: function(apply) {
       console.log("Application get saved.");
       response.success("Request received.");
+      //refer.referBroadCast(request.params.user_id, request.params.company_id);
     },
     error: function(apply, error) {
       console.log(error);
